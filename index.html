@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Md Mehrabh — Portfolio</title>
+  <meta name="description" content="Portfolio of Md Mehrabh: projects, skills, and contact information." />
+  <meta property="og:title" content="Md Mehrabh — Portfolio" />
+  <meta property="og:description" content="Projects, skills, and contact information." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0ea5e9" />
+  <link rel="preconnect" href="https://api.github.com" crossorigin />
+  <style>
+    :root {
+      --bg: #0b1220;
+      --bg-soft: #0f172a;
+      --card: #0f172a;
+      --text: #e5e7eb;
+      --muted: #94a3b8;
+      --accent: #38bdf8;
+      --ring: rgba(56, 189, 248, 0.35);
+      --border: rgba(148, 163, 184, 0.2);
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0; font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: radial-gradient(1200px 600px at 100% -20%, rgba(56,189,248,.08), transparent 60%),
+                  radial-gradient(900px 500px at -10% 0%, rgba(99,102,241,.08), transparent 60%), var(--bg);
+      color: var(--text); line-height: 1.55;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 1100px; padding: 0 20px; margin: 0 auto; }
+    header {
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: blur(8px); background: rgba(11,18,32,0.6); border-bottom: 1px solid var(--border);
+    }
+    .nav {
+      display: flex; align-items: center; justify-content: space-between; padding: 14px 0;
+    }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: .3px; }
+    .brand img { width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--border); }
+    .nav a { margin-left: 18px; font-weight: 500; color: var(--text); opacity: .9; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 14px; border: 1px solid var(--border); border-radius: 14px; background: linear-gradient(180deg, rgba(56,189,248,.12), rgba(56,189,248,.08));
+      color: var(--text); text-decoration: none; box-shadow: 0 0 0 0 var(--ring);
+      transition: box-shadow .2s ease, transform .05s ease, background .2s ease;
+    }
+    .btn:hover { box-shadow: 0 0 0 6px var(--ring); text-decoration: none; }
+    .btn:active { transform: translateY(1px); }
+
+    /* Hero */
+    .hero { display: grid; grid-template-columns: 1.2fr .8fr; gap: 28px; align-items: center; padding: 60px 0 30px; }
+    .hero h1 { font-size: clamp(28px, 4vw, 44px); line-height: 1.15; margin: 0 0 10px; }
+    .hero .subtitle { font-size: clamp(16px, 2.3vw, 20px); color: var(--muted); margin-bottom: 20px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 26px; }
+    .tag { padding: 6px 10px; border: 1px solid var(--border); border-radius: 999px; font-size: 13px; color: var(--muted); background: rgba(148,163,184,0.05); }
+    .card { background: linear-gradient(180deg, rgba(148,163,184,.06), rgba(148,163,184,.03)); border: 1px solid var(--border); border-radius: 18px; padding: 20px; }
+    .hero .photo { display: grid; place-items: center; }
+    .photo img { width: 220px; height: 220px; border-radius: 22px; object-fit: cover; border: 1px solid var(--border); box-shadow: 0 15px 60px rgba(0,0,0,.35); }
+
+    section { padding: 50px 0; }
+    h2 { font-size: 24px; margin: 0 0 18px; }
+
+    /* Grid */
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .repo { display: grid; gap: 8px; border-radius: 16px; padding: 16px; border: 1px solid var(--border); background: var(--card);
+      transition: transform .08s ease, box-shadow .2s ease, border-color .2s ease; }
+    .repo:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,.25); border-color: rgba(56,189,248,.35); }
+    .repo h3 { margin: 0; font-size: 16px; display: flex; align-items: center; gap: 8px; }
+    .repo p { margin: 0; color: var(--muted); font-size: 14px; min-height: 42px; }
+    .repo .meta { display: flex; gap: 12px; align-items: center; font-size: 12px; color: var(--muted); }
+
+    .skills { display: flex; flex-wrap: wrap; gap: 10px; }
+    .skill { border: 1px solid var(--border); padding: 8px 12px; border-radius: 12px; font-size: 13px; background: rgba(148,163,184,0.06); }
+
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+    footer { border-top: 1px solid var(--border); padding: 26px 0 40px; color: var(--muted); }
+
+    /* Responsive */
+    @media (max-width: 980px) {
+      .hero { grid-template-columns: 1fr; }
+      .grid { grid-template-columns: repeat(2, 1fr); }
+      .row { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .grid { grid-template-columns: 1fr; }
+      .brand span { display: none; }
+    }
+
+    /* Light theme */
+    .light { --bg: #f9fafb; --bg-soft: #ffffff; --card: #ffffff; --text: #0b1220; --muted: #475569; --accent: #0ea5e9; --ring: rgba(14,165,233,0.25); --border: rgba(15, 23, 42, 0.08); background: #f8fafc; }
+    .light body { background: #f8fafc; }
+    .light .btn { background: linear-gradient(180deg, rgba(14,165,233,.10), rgba(14,165,233,.06)); }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <img id="avatar" alt="Avatar" src="" />
+        <span id="brand-name">Md Mehrabh</span>
+      </div>
+      <nav>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a id="themeToggle" class="btn" href="#">Toggle theme</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- HERO -->
+    <section class="hero">
+      <div>
+        <div class="card">
+          <h1 id="fullname">Md Mehrabh</h1>
+          <div class="subtitle" id="tagline">Building useful things on the web.</div>
+          <div class="tags" id="roles">
+            <!-- Filled by JS -->
+          </div>
+          <div>
+            <a class="btn" id="cta-github" target="_blank" rel="noopener">GitHub Profile</a>
+            <a class="btn" id="cta-resume" target="_blank" rel="noopener" href="#">Download Résumé</a>
+          </div>
+        </div>
+      </div>
+      <div class="photo">
+        <img id="profile-photo" alt="Profile photo" src=""/>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <h2>Featured Projects</h2>
+      <div class="grid" id="repo-grid">
+        <!-- Repos go here -->
+      </div>
+      <p style="margin-top:14px">
+        <a id="all-repos-link" target="_blank" rel="noopener">See all repositories →</a>
+      </p>
+    </section>
+
+    <section id="skills" class="row">
+      <div>
+        <h2>Skills</h2>
+        <div class="skills" id="skills-list"></div>
+      </div>
+      <div>
+        <h2>Highlights</h2>
+        <div class="card">
+          <ul id="highlights" style="margin:0; padding-left:18px;">
+            <li>Open-source projects on GitHub</li>
+            <li>Clean, accessible UI and responsive design</li>
+            <li>Fast, lightweight, single-file site</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="row">
+      <div>
+        <h2>About</h2>
+        <div class="card" id="about-text">I’m a developer who enjoys turning ideas into working products. I like solving problems, learning quickly, and collaborating.
+        </div>
+      </div>
+      <div>
+        <h2>Contact</h2>
+        <div class="card" id="contact">
+          <p>Have a question or want to work together?</p>
+          <p><strong>Email:</strong> <a id="email-link" href="mailto:hello@example.com">hello@example.com</a></p>
+          <p style="display:flex; gap:10px; flex-wrap: wrap; margin-top: 10px">
+            <a class="btn" id="gh-link" target="_blank" rel="noopener">GitHub</a>
+            <a class="btn" id="li-link" target="_blank" rel="noopener" href="#">LinkedIn</a>
+            <a class="btn" id="tw-link" target="_blank" rel="noopener" href="#">Twitter/X</a>
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © <span id="year"></span> <span id="footer-name">Md Mehrabh</span>. Built with ♡ and the GitHub API.
+    </div>
+  </footer>
+
+  <script>
+    // =====================
+    // CONFIG — EDIT THESE
+    // =====================
+    const CONFIG = {
+      githubUsername: 'mdmehrabh67-ai',
+      fullName: 'Md Mehrabh', // Shown in hero + footer
+      roles: ['Developer', 'Open-Source Enthusiast', 'Lifelong Learner'],
+      resumeUrl: '#', // e.g., './assets/Mehrabh_Resume.pdf'
+      email: 'hello@example.com',
+      socials: {
+        linkedin: '#',
+        twitter: '#'
+      },
+      skills: [
+        'JavaScript', 'TypeScript', 'React', 'Node.js', 'Python', 'Django', 'Flask', 'TailwindCSS', 'HTML', 'CSS', 'Git', 'REST APIs'
+      ],
+      maxRepos: 9 // number of repos to feature
+    };
+
+    // Persisted theme
+    const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light' || (!savedTheme && prefersLight)) document.documentElement.classList.add('light');
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Populate static bits
+    document.getElementById('fullname').textContent = CONFIG.fullName;
+    document.getElementById('brand-name').textContent = CONFIG.fullName;
+    document.getElementById('footer-name').textContent = CONFIG.fullName;
+    document.getElementById('cta-github').href = `https://github.com/${CONFIG.githubUsername}`;
+    document.getElementById('all-repos-link').href = `https://github.com/${CONFIG.githubUsername}?tab=repositories`;
+    document.getElementById('cta-resume').href = CONFIG.resumeUrl;
+    document.getElementById('email-link').href = `mailto:${CONFIG.email}`;
+    document.getElementById('email-link').textContent = CONFIG.email;
+    document.getElementById('gh-link').href = `https://github.com/${CONFIG.githubUsername}`;
+    document.getElementById('li-link').href = CONFIG.socials.linkedin;
+    document.getElementById('tw-link').href = CONFIG.socials.twitter;
+
+    // Roles
+    const rolesWrap = document.getElementById('roles');
+    CONFIG.roles.forEach(r => {
+      const s = document.createElement('span'); s.className = 'tag'; s.textContent = r; rolesWrap.appendChild(s);
+    });
+
+    // Skills
+    const skillsWrap = document.getElementById('skills-list');
+    CONFIG.skills.forEach(sk => { const b = document.createElement('span'); b.className = 'skill'; b.textContent = sk; skillsWrap.appendChild(b); });
+
+    // Theme toggler
+    document.getElementById('themeToggle').addEventListener('click', (e) => {
+      e.preventDefault();
+      const isLight = document.documentElement.classList.toggle('light');
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    });
+
+    // Fetch GitHub profile
+    async function loadGitHub() {
+      const userRes = await fetch(`https://api.github.com/users/${CONFIG.githubUsername}`);
+      const user = await userRes.json();
+      const avatar = user.avatar_url || '';
+      const bio = user.bio || '';
+      const name = user.name || CONFIG.fullName;
+
+      if (avatar) {
+        document.getElementById('avatar').src = avatar + '&s=80';
+        document.getElementById('profile-photo').src = avatar + '&s=420';
+      }
+      if (bio) {
+        document.getElementById('about-text').textContent = bio;
+        document.getElementById('tagline').textContent = bio.length > 90 ? bio.slice(0, 90) + '…' : bio;
+      }
+      document.getElementById('fullname').textContent = name;
+      document.getElementById('brand-name').textContent = name;
+      document.getElementById('footer-name').textContent = name;
+
+      // Repos
+      const reposRes = await fetch(`https://api.github.com/users/${CONFIG.githubUsername}/repos?per_page=100&sort=updated`);
+      let repos = await reposRes.json();
+      if (!Array.isArray(repos)) repos = [];
+
+      repos = repos.filter(r => !r.fork);
+      repos.sort((a, b) => {
+        const starDiff = (b.stargazers_count || 0) - (a.stargazers_count || 0);
+        if (starDiff !== 0) return starDiff;
+        return new Date(b.pushed_at) - new Date(a.pushed_at);
+      });
+
+      const top = repos.slice(0, CONFIG.maxRepos);
+      const grid = document.getElementById('repo-grid');
+
+      if (top.length === 0) {
+        const empty = document.createElement('div');
+        empty.className = 'card';
+        empty.textContent = 'No public repositories yet. Check back soon!';
+        grid.appendChild(empty);
+      }
+
+      top.forEach(repo => {
+        const div = document.createElement('a');
+        div.className = 'repo';
+        div.href = repo.html_url; div.target = '_blank'; div.rel = 'noopener';
+        div.innerHTML = `
+          <h3>📦 ${repo.name}</h3>
+          <p>${repo.description ? repo.description.replace(/</g, '&lt;') : 'No description provided.'}</p>
+          <div class="meta">
+            <span>★ ${repo.stargazers_count || 0}</span>
+            ${repo.language ? `<span>• ${repo.language}</span>` : ''}
+            <span>• Updated ${new Date(repo.pushed_at).toLocaleDateString()}</span>
+          </div>
+        `;
+        grid.appendChild(div);
+      });
+    }
+
+    loadGitHub().catch(err => {
+      console.error(err);
+      const grid = document.getElementById('repo-grid');
+      const error = document.createElement('div');
+      error.className = 'card';
+      error.textContent = 'Failed to load repositories from GitHub API. Please try again later.';
+      grid.appendChild(error);
+    });
+  </script>
+</body>
+</html>
