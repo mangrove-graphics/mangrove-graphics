@@ -48,12 +48,12 @@
     .btn:active { transform: translateY(1px); }
 
     /* Cover Photo */
-    .cover-photo img {
-      width: 100%;
-      height: 280px;
-      object-fit: cover;
-      display: block;
-    }
+  .cover-photo img {
+    width: 100%;
+    height: auto;   /* keep original aspect ratio */
+    object-fit: contain; /* make sure full image shows */
+  }
+
     @media (max-width: 640px) {
       .cover-photo img {
         height: 180px;
