@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Md Mehrabh — Portfolio</title>
-  <meta name="description" content="Portfolio of Md Mehrabh: projects, skills, and contact information." />
-  <meta property="og:title" content="Md Mehrabh — Portfolio" />
+  <title>Mangrove Graphics — Portfolio</title>
+  <meta name="description" content="Portfolio of Mangrove Graphics: projects, skills, and contact information." />
+  <meta property="og:title" content="Mangrove Graphics — Portfolio" />
   <meta property="og:description" content="Projects, skills, and contact information." />
   <meta property="og:type" content="website" />
   <meta name="theme-color" content="#0ea5e9" />
@@ -102,7 +102,7 @@
     <div class="container nav">
       <div class="brand">
         <img id="avatar" alt="Avatar" src="" />
-        <span id="brand-name">Md Mehrabh</span>
+        <span id="brand-name">Mangrove Graphics</span>
       </div>
       <nav>
         <a href="#projects">Projects</a>
@@ -119,14 +119,12 @@
     <section class="hero">
       <div>
         <div class="card">
-          <h1 id="fullname">Md Mehrabh</h1>
-          <div class="subtitle" id="tagline">Building useful things on the web.</div>
-          <div class="tags" id="roles">
-            <!-- Filled by JS -->
-          </div>
+          <h1 id="fullname">Mangrove Graphics</h1>
+          <div class="subtitle" id="tagline">Open-source collective for creative graphics tools.</div>
+          <div class="tags" id="roles"></div>
           <div>
             <a class="btn" id="cta-github" target="_blank" rel="noopener">GitHub Profile</a>
-            <a class="btn" id="cta-resume" target="_blank" rel="noopener" href="#">Download Résumé</a>
+            <a class="btn" id="cta-resume" target="_blank" rel="noopener" href="#">Docs</a>
           </div>
         </div>
       </div>
@@ -138,9 +136,7 @@
     <!-- PROJECTS -->
     <section id="projects">
       <h2>Featured Projects</h2>
-      <div class="grid" id="repo-grid">
-        <!-- Repos go here -->
-      </div>
+      <div class="grid" id="repo-grid"></div>
       <p style="margin-top:14px">
         <a id="all-repos-link" target="_blank" rel="noopener">See all repositories →</a>
       </p>
@@ -155,8 +151,8 @@
         <h2>Highlights</h2>
         <div class="card">
           <ul id="highlights" style="margin:0; padding-left:18px;">
-            <li>Open-source projects on GitHub</li>
-            <li>Clean, accessible UI and responsive design</li>
+            <li>Open-source projects under Mangrove Graphics</li>
+            <li>Creative coding, graphics, and UI design</li>
             <li>Fast, lightweight, single-file site</li>
           </ul>
         </div>
@@ -166,14 +162,15 @@
     <section id="about" class="row">
       <div>
         <h2>About</h2>
-        <div class="card" id="about-text">I’m a developer who enjoys turning ideas into working products. I like solving problems, learning quickly, and collaborating.
+        <div class="card" id="about-text">
+          We are Mangrove Graphics — an open-source collective focused on creative coding, graphics programming, and design tooling.
         </div>
       </div>
       <div>
         <h2>Contact</h2>
         <div class="card" id="contact">
-          <p>Have a question or want to work together?</p>
-          <p><strong>Email:</strong> <a id="email-link" href="mailto:hello@example.com">hello@example.com</a></p>
+          <p>Want to collaborate or learn more?</p>
+          <p><strong>Email:</strong> <a id="email-link" href="mailto:contact@mangrove-graphics.org">contact@mangrove-graphics.org</a></p>
           <p style="display:flex; gap:10px; flex-wrap: wrap; margin-top: 10px">
             <a class="btn" id="gh-link" target="_blank" rel="noopener">GitHub</a>
             <a class="btn" id="li-link" target="_blank" rel="noopener" href="#">LinkedIn</a>
@@ -186,38 +183,33 @@
 
   <footer>
     <div class="container">
-      © <span id="year"></span> <span id="footer-name">Md Mehrabh</span>. Built with ♡ and the GitHub API.
+      © <span id="year"></span> <span id="footer-name">Mangrove Graphics</span>. Built with ♡ and the GitHub API.
     </div>
   </footer>
 
   <script>
-    // =====================
-    // CONFIG — EDIT THESE
-    // =====================
     const CONFIG = {
-      githubUsername: 'mdmehrabh67-ai',
-      fullName: 'Md Mehrabh', // Shown in hero + footer
-      roles: ['Developer', 'Open-Source Enthusiast', 'Lifelong Learner'],
-      resumeUrl: '#', // e.g., './assets/Mehrabh_Resume.pdf'
-      email: 'hello@example.com',
+      githubUsername: 'mangrove-graphics',
+      fullName: 'Mangrove Graphics',
+      roles: ['Open-Source Collective', 'Design + Code', 'Creative Tools'],
+      resumeUrl: '#', // link to docs or PDF
+      email: 'contact@mangrove-graphics.org',
       socials: {
         linkedin: '#',
         twitter: '#'
       },
       skills: [
-        'JavaScript', 'TypeScript', 'React', 'Node.js', 'Python', 'Django', 'Flask', 'TailwindCSS', 'HTML', 'CSS', 'Git', 'REST APIs'
+        'Graphics Programming','WebGL','Canvas API','TypeScript',
+        'React','Node.js','Open Source','Creative Coding'
       ],
-      maxRepos: 9 // number of repos to feature
+      maxRepos: 9
     };
 
-    // Persisted theme
     const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'light' || (!savedTheme && prefersLight)) document.documentElement.classList.add('light');
 
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Populate static bits
     document.getElementById('fullname').textContent = CONFIG.fullName;
     document.getElementById('brand-name').textContent = CONFIG.fullName;
     document.getElementById('footer-name').textContent = CONFIG.fullName;
@@ -230,29 +222,23 @@
     document.getElementById('li-link').href = CONFIG.socials.linkedin;
     document.getElementById('tw-link').href = CONFIG.socials.twitter;
 
-    // Roles
     const rolesWrap = document.getElementById('roles');
-    CONFIG.roles.forEach(r => {
-      const s = document.createElement('span'); s.className = 'tag'; s.textContent = r; rolesWrap.appendChild(s);
-    });
+    CONFIG.roles.forEach(r => { const s = document.createElement('span'); s.className = 'tag'; s.textContent = r; rolesWrap.appendChild(s); });
 
-    // Skills
     const skillsWrap = document.getElementById('skills-list');
     CONFIG.skills.forEach(sk => { const b = document.createElement('span'); b.className = 'skill'; b.textContent = sk; skillsWrap.appendChild(b); });
 
-    // Theme toggler
     document.getElementById('themeToggle').addEventListener('click', (e) => {
       e.preventDefault();
       const isLight = document.documentElement.classList.toggle('light');
       localStorage.setItem('theme', isLight ? 'light' : 'dark');
     });
 
-    // Fetch GitHub profile
     async function loadGitHub() {
       const userRes = await fetch(`https://api.github.com/users/${CONFIG.githubUsername}`);
       const user = await userRes.json();
       const avatar = user.avatar_url || '';
-      const bio = user.bio || '';
+      const bio = user.description || user.bio || '';
       const name = user.name || CONFIG.fullName;
 
       if (avatar) {
@@ -267,28 +253,18 @@
       document.getElementById('brand-name').textContent = name;
       document.getElementById('footer-name').textContent = name;
 
-      // Repos
       const reposRes = await fetch(`https://api.github.com/users/${CONFIG.githubUsername}/repos?per_page=100&sort=updated`);
       let repos = await reposRes.json();
       if (!Array.isArray(repos)) repos = [];
-
       repos = repos.filter(r => !r.fork);
-      repos.sort((a, b) => {
-        const starDiff = (b.stargazers_count || 0) - (a.stargazers_count || 0);
-        if (starDiff !== 0) return starDiff;
-        return new Date(b.pushed_at) - new Date(a.pushed_at);
-      });
-
+      repos.sort((a, b) => (b.stargazers_count - a.stargazers_count) || (new Date(b.pushed_at) - new Date(a.pushed_at)));
       const top = repos.slice(0, CONFIG.maxRepos);
       const grid = document.getElementById('repo-grid');
-
       if (top.length === 0) {
-        const empty = document.createElement('div');
-        empty.className = 'card';
+        const empty = document.createElement('div'); empty.className = 'card';
         empty.textContent = 'No public repositories yet. Check back soon!';
         grid.appendChild(empty);
       }
-
       top.forEach(repo => {
         const div = document.createElement('a');
         div.className = 'repo';
